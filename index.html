@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Liang Lab | Cilia Biology & Brain Tumor Research</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            text-align: justify;
+        }
+
+        /* 标题和导航不需要两端对齐 */
+        h1, h2, h3, .nav-container, .hero-content, .section-title, .person-name, .person-title, .logo, .nav-links, footer, .fig-caption, .news-item {
+            text-align: left;
+        }
+        .hero-content h1, .hero-content p {
+            text-align: center;
+        }
+        .btn-hero {
+            text-align: center;
+            display: inline-block;
+        }
+        .hero-content .btn-hero-container {
+            text-align: center;
+        }
+        .person-card, .person-card * {
+            text-align: center;
+        }
+        .news-list .news-item {
+            text-align: left;
+        }
+        .contact-info, .hiring-card {
+            text-align: left;
+        }
+        .image-placeholder, .research-image {
+            text-align: center;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.8rem 0;
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo a {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f2b4d, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e293b;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('11.png') center/contain;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+        .btn-hero {
+            background: white;
+            color: #0f2b4d;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .btn-hero:hover {
+            background: #eef2ff;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            border-left: 5px solid #2563eb;
+            padding-left: 1rem;
+        }
+
+        .research-direction, .research-projects, .research-contributions {
+            margin-bottom: 2.5rem;
+        }
+        .research-direction h3, .research-projects h3, .research-contributions h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f2b4d;
+        }
+        .research-direction p, .research-projects p, .research-contributions p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .research-projects ul, .research-contributions ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .research-projects li, .research-contributions li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+        .project-title, .contribution-title {
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        /* 图片样式 - 无灰色框，仅图片居中，大小40% */
+        .research-image {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .research-image img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 12px;
+        }
+        .fig-caption {
+            font-size: 0.85rem;
+            color: #4b5563;
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .pub-item {
+            background: #ffffff;
+            border-left: 4px solid #2563eb;
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: 0.1s;
+        }
+        .pub-authors {
+            font-size: 0.85rem;
+            color: #334155;
+            margin-top: 0.25rem;
+            word-break: break-word;
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .person-card {
+            background: white;
+            border-radius: 28px;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eef2ff;
+        }
+        .person-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid #e2e8f0;
+            background: #eef2ff;
+        }
+        .person-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .person-title {
+            font-size: 0.85rem;
+            color: #2563eb;
+            margin: 0.3rem 0;
+        }
+        .news-list {
+            background: #fefce8;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border-left: 6px solid #eab308;
+        }
+        .news-item {
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background: #f9fbfe;
+            border-radius: 32px;
+            padding: 2rem;
+        }
+        .contact-info {
+            flex: 1;
+        }
+        .hiring-card {
+            flex: 1;
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 1px solid #cbdffc;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .btn-email {
+            background: #2563eb;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            text-decoration: none;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #eef2ff;
+            background: #fafcff;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 780px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: white;
+                padding: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 2rem 1.2rem;
+            }
+            .fig-caption {
+                max-width: 100%;
+            }
+            .research-image img {
+                max-width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo"><a href="#">Liang Lab</a></div>
+        <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#people">People</a></li>
+            <li><a href="#news">Lab News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Yinwen Liang Laboratory<br> Cilia Master Switches & Disease</h1>
+            <p>Decoding primary cilia gene regulatory networks, Hedgehog signaling, SHH medulloblastoma, and brain regeneration.</p>
+            <div style="text-align: center;">
+                <a href="#research" class="btn-hero">Discover our science <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH SECTION with images (no gray box) -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">Research</h2>
+            
+            <div class="research-direction">
+                <h3>Research Direction</h3>
+                <p>The Liang laboratory at CIMR works on understanding mammalian development and tissues hemostasis, with a particular emphasis on the vital organelle, cilium. Cilia are present on the surface of most cells, play critical roles in motility, sensing, and signaling transduction, particularly Hedgehog (Hh) signaling pathway. Using genetic and multi-omics approaches, the Liang laboratory aims to uncover the molecular mechanism behind cilia formation and dysfunction, specifically in ciliopathies and Hedgehog signaling-related brain tumors (SHH-medulloblastoma). The laboratory is committed to advancing the understanding of these mechanisms to develop therapeutic strategies for treating related diseases.</p>
+                
+                <!-- 图片 1: HH signaling.png -->
+                <div class="research-image">
+                    <img src="HH signaling.png" alt="HH signaling in development and disease">
+                </div>
+                <div class="fig-caption">
+                    </strong> HH signaling is essential for embryonic development and tissue homeostasis, while overaction of HH signaling results in tumor formation. Left, wildtype and Shh null mouse embryos; Right, MRI images of SHH-medulloblastoma.
+                </div>
+            </div>
+
+            <div class="research-projects">
+                <h3>Major Research Projects</h3>
+                <ul>
+                    <li><span class="project-title">1. Identifying novel regulators of the ciliary gene regulatory network</span><br>
+                    The lab has identified two key transcription factors SP5/8 of SP/KLF family binds to GC box of numerous ciliary genes, but how these TFs specially activating ciliary genes remains unclear. We hypothesize that cofactors, inductive signals and lineage-specific TFs play significant roles. Through forward genetic screens, the team have discovered novel regulators that mediate mRNA stability of cilia genes (publication in preparation). We are currently employing perturb-seq combined with high-throughput CRISPR screens to elucidate the detailed gene regulatory network involved in cilia formation.</li>
+                    
+                    <li><span class="project-title">2. Dissecting cell-type-specific cilia formation and morphological diversity</span><br>
+                    The laboratory is exploring how different cell types regulate cilia formation and maintain the diversity of cilia morphology, which is essential for proper cellular function and tissue homeostasis.</li>
+                    
+                    <li><span class="project-title">3. Understanding the molecular mechanisms of ciliopathies and SHH-medulloblastoma</span><br>
+                    Building on earlier discoveries, the lab is investigating the roles of SP/KLF family transcription factors and newly identified regulators in ciliopathies and SHH-medulloblastoma using induced pluripotent stem cell (iPSC)-derived airway organoids. The long-term goal is to harness the regulation of cilia formation as a therapeutic strategy to treat ciliopathies and Hedgehog-driven tumors.</li>
+                    
+                    <li><span class="project-title">4. Exploring the roles of primary cilia in neuron maturation and differentiation</span><br>
+                    The Liang laboratory is studying the critical role of primary cilia in the maturation and differentiation of neurons and aiming to use insights from the gene regulatory network to rejuvenate the brain following injury or aging.</li>
+                </ul>
+            </div>
+
+            <div class="research-contributions">
+                <h3>Major Contributions</h3>
+                <ul>
+                    <li>
+                        <span class="contribution-title">1. Discovered transcription factors SP5 and SP8 as key transcriptional regulators in cilia formation (Science, 2025)</span><br>
+                        The laboratory discovered SP5 and SP8 as key transcriptional regulators of cilia formation, demonstrated that SP5 and SP8 directly bind to and activate numerous cilia gene expression, including Foxj1 and RFX family TFs genes. Ectopic expression of SP8 can induce cilia formation in naturally unciliated cells, these two TFs are both necessary and sufficient to drive cilia formation (Science, 2025).
+                        
+                        <!-- 图片 2a 和 2b: SP5_8.png 和 SP5_8_2.png，上下放置 -->
+                        <div class="research-image" style="margin-top: 1rem;">
+                            <img src="SP5_8.png" alt="SP5/8 driving cilia formation 1">
+                        </div>
+                        <div class="research-image" style="margin-top: 1rem;">
+                            <img src="SP5_8_2.png" alt="SP5/8 driving cilia formation 2">
+                        </div>
+                    </li>
+                    
+                    <li>
+                        <span class="contribution-title">2. Uncovered the mechanisms of intraflagellar transport machinery and cilia assembly (Current Biology, 2018; Developmental Cell, 2014a; Developmental Cell, 2014b)</span><br>
+                        The Liang lab uncovered the molecular mechanisms governing intraflagellar transport (IFT) and cilia assembly, including the regulation of motor protein KIF3B via phosphorylation at S663. We also discovered a cilia-length regulation model through the regulation of IFT loading rate. (Current Biology, 2018; Developmental Cell, 2014a; Developmental Cell, 2014b)
+                        
+                        <!-- 图片 3: IFT.png -->
+                        <div class="research-image" style="margin-top: 1rem;">
+                            <img src="IFT.png" alt="IFT machinery and cilia assembly regulation">
+                        </div>
+                    </li>
+                    
+                    <li><span class="contribution-title">3. Revealed molecular insights into ciliopathies and SHH-medulloblastoma (Science, 2025; eLife, 2025; Journal of Cell Biology, 2018; American Journal of Human Genetics, 2018)</span><br>
+                    The lab has made significant contributions to understanding the molecular basis of ciliopathies and SHH-medulloblastoma, identifying key regulatory nodes that may serve as therapeutic targets.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" style="background: #fefdf8;">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="pub-list">
+                <div class="pub-item">
+                    <div class="pub-authors"><strong>Liang Y#</strong>, Koche R, Chalamalasetty RB, Stephen DN, Kennedy MW, Lao Z, Pang Y, Kuo YY, Lee M, Lobo FP, Huang X, Hadjantonakis AK, Yamaguchi TP, Anderson KV, Joyner AL#. Transcription factors SP5 and SP8 drive primary cilia formation in mammalian embryos. <em>Science</em>, 2025, 389(6763): eadt5663. DOI: 10.1126/science.adt5663</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors">Lao Z, Nagar SE, <strong>Liang Y</strong>, Stephen DN, Joyner AL. PTEN restrains SHH medulloblastoma growth through cell autonomous and nonautonomous mechanisms. <em>eLife</em>, 2025. DOI: 10.1101/2025.07.31.667996</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors"><strong>Liang Y</strong>, Zhu X, Wu Q, Pan J. Ciliary Length Sensing Regulates IFT Entry via Changes in FLA8/KIF3B Phosphorylation to Control Ciliary Assembly. <em>Current Biology</em>, 2018, 28(15): 2429-2435.e3. DOI: 10.1016/j.cub.2018.05.069</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors">Agbu SO*, <strong>Liang Y*</strong>, Liu A, Anderson KV. The small GTPase RSG1 controls a final step in primary cilia initiation. <em>Journal of Cell Biology</em>, 2018, 217(1): 413-427. DOI: 10.1083/jcb.201604048</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors"><strong>Liang Y*</strong>, Pang Y*, Wu Q, Hu Z, Han X, Xu Y, Deng H, Pan J. FLA8/KIF3B phosphorylation regulates kinesin-II interaction with IFT-B to control IFT entry and turnaround. <em>Developmental Cell</em>, 2014, 30(5): 585-97. DOI: 10.1016/j.devcel.2014.07.019 <span style="background:#eef2ff; padding:2px 6px; border-radius:12px; font-size:0.7rem;">Highlighted by Craige B & Witman G, Dev Cell 2014</span></div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors"><strong>Liang Y</strong>, Meng D, Zhu B, Pan J. Mechanism of ciliary disassembly. <em>Cellular and Molecular Life Sciences</em>, 2016, 73(9): 1787-802. DOI: 10.1007/s00018-016-2148-7</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors"><strong>Liang Y</strong>, Pan J. Regulation of flagellar biogenesis by a calcium dependent protein kinase in Chlamydomonas reinhardtii. <em>PLoS One</em>, 2013, 8(7): e69902. DOI: 10.1371/journal.pone.0069902</div>
+                </div>
+                <div class="pub-item">
+                    <div class="pub-authors">Eguether T, San Agustin JT, Keady BT, Jonassen JA, <strong>Liang Y</strong>, Francis R, Tobita K, Johnson CA, Abdelhamed ZA, Lo CW, Pazour GJ. IFT27 links the BBSome to IFT for maintenance of the ciliary signaling compartment. <em>Developmental Cell</em>, 2014, 31(3): 279-290. DOI: 10.1016/j.devcel.2014.09.011</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PEOPLE SECTION -->
+    <section id="people">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="people-grid">
+                <div class="person-card">
+                    <img class="person-img" src="liang.jpg" alt="Dr. Yinwen Liang">
+                    <div class="person-name">Yinwen Liang, PhD</div>
+                    <div class="person-title">Principal Investigator</div>
+                    <div><i class="fas fa-envelope"></i> liangyinwen@cimrbj.ac.cn</div>
+                </div>
+                <div class="person-card">
+                    <img class="person-img" src="ma.jpg" alt="Dr. Xiaojing Ma">
+                    <div class="person-name">Xiaojing Ma, PhD</div>
+                    <div class="person-title">Postdoctoral Fellow</div>
+                    <div> Transcriptional regulation of cilia in mammals using cutting-edge technologies.</div>
+                    <div><i class="fas fa-envelope"></i> maxiaojing@cimrbj.ac.cn</div>
+                </div>
+                <div class="person-card">
+                    <img class="person-img" src="sun.jpg" alt="Jiaqi Sun">
+                    <div class="person-name">Jiaqi Sun</div>
+                    <div class="person-title">PhD student</div>
+                    <div> Roles of primary cilia in tumor development and progression</div>
+                    <div><i class="fas fa-envelope"></i> sunjiaqi@cimrbj.ac.cn</div>
+                </div>
+                <div class="person-card">
+                    <img class="person-img" src="zhang.jpg" alt="Wenxiao Zhang">
+                    <div class="person-name">Wenxiao Zhang</div>
+                    <div class="person-title">PhD student</div>
+                    <div>Molecular mechanisms of ciliary function and dysfunction and promoting the development of treatment strategies for related diseases.</div>
+                    <div><i class="fas fa-envelope"></i> zhangwenxiao@cimrbj.ac.cn</div>
+                </div>
+                <div class="person-card">
+                    <img class="person-img" src="ji.jpg" alt="Bingru Ji">
+                    <div class="person-name">Bingru Ji</div>
+                    <div class="person-title">Research Assistant</div>
+                    <div><i class="fas fa-envelope"></i> jibingru@cimrbj.ac.cn</div>
+                   </div>
+                <div class="person-card">
+                    <img class="person-img" src="wang.jpg" alt="Chenfei Wang">
+                    <div class="person-name">Chenfei Wang</div>
+                    <div class="person-title">Research Assistant</div>
+                    <div><i class="fas fa-envelope"></i> wangchenfei@cimrbj.ac.cn</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB NEWS SECTION - 只保留第一条 -->
+    <section id="news" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title">Lab News</h2>
+            <div class="news-list">
+                <div class="news-item"><i class="fas fa-trophy" style="color:#eab308;"></i> <strong>Jan 2026:</strong> Dr. Liang officially launches the lab at CIMR – recruiting talented researchers!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Opportunities</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                    <p>10 Xitoutiao, Youanmen Wai, Fengtai District<br>Beijing, China</p>
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p>liangyinwen@cimrbj.ac.cn</p>
+                    <h3><i class="fab fa-twitter"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-google-scholar"></i></h3>
+                    <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                        <a href="#" style="color:#2563eb;"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" style="color:#2563eb;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+                <div class="hiring-card">
+                    <i class="fas fa-bullhorn" style="font-size: 2rem; color:#2563eb;"></i>
+                    <h3>We are hiring! Postdoctoral Fellows</h3>
+                    <p>We seek highly motivated postdocs to join our team at CIMR. Research directions include: cilia gene regulation, Hedgehog signaling, brain tumor organoids (SHH medulloblastoma), in vivo CRISPR screens, and cilia-based neural regeneration.</p>
+                    <p><strong>Requirements:</strong> PhD in molecular biology, neuroscience, genetics, cell biology or a related field; strong publication record; enthusiasm for cilia and developmental biology.</p>
+                    <p><i class="fas fa-paper-plane"></i> To apply, please send your CV, a brief research interest statement, and contact information of two referees to <strong>liangyinwen@cimrbj.ac.cn</strong> with subject line "Postdoc application – Liang Lab".</p>
+                    <a href="mailto:liangyinwen@cimrbj.ac.cn?subject=Postdoc%20application%20-%20Liang%20Lab" class="btn-email"><i class="fas fa-envelope"></i> Apply now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Liang Laboratory |  Chinese Institutes for Medical Research, Beijing | All publications listed in full</p>
+    <p style="margin-top: 0.4rem; font-size: 0.75rem;">Exploring cilia master switches, Hedgehog signaling, and brain repair</p>
+</footer>
+
+<script>
+    const mobileBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    if(mobileBtn && navLinks){
+        mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId === "#") return;
+            const targetElem = document.querySelector(targetId);
+            if(targetElem){
+                e.preventDefault();
+                targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.pushState(null, null, targetId);
+            }
+        });
+    });
+</script>
+</body>
+</html>
